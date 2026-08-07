@@ -47,6 +47,12 @@ else:
         )
 
 
+print("DB_HOST carregado:", DB_HOST)
+print("DB_PORT carregado:", DB_PORT)
+print("DB_NAME carregado:", DB_NAME)
+print("DB_USER carregado:", DB_USER)
+print("DB_PASSWORD definida:", bool(DB_PASSWORD))
+
 # ---------------------------------------------------------
 # ENGINE
 # ---------------------------------------------------------
