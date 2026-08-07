@@ -1,10 +1,36 @@
-import streamlit as st
+import os
+
 import bcrypt
+import streamlit as st
 
-from sqlalchemy import select
+from sqlalchemy import select, text
 
-from database import SessionLocal
+from database import SessionLocal, engine
 from models import Morador
+with st.expander("🔧 Diagnóstico do banco"):
+
+    st.write("Host:", os.getenv("DB_HOST"))
+    st.write("Porta:", os.getenv("DB_PORT"))
+    st.write("Banco:", os.getenv("DB_NAME"))
+    st.write("Usuário:", os.getenv("DB_USER"))
+    st.write(
+        "Senha carregada:",
+        "Sim" if os.getenv("DB_PASSWORD") else "Não"
+    )
+
+    try:
+        with engine.connect() as conn:
+            resultado = conn.execute(
+                text("SELECT 1")
+            ).scalar()
+
+        st.success(
+            f"Conexão com PostgreSQL OK. Teste: {resultado}"
+        )
+
+    except Exception as exc:
+        st.error("Falha na conexão com PostgreSQL.")
+        st.exception(exc)
 
 
 st.set_page_config(
