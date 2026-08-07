@@ -47,6 +47,7 @@ else:
         )
 
 
+print("=== DATABASE.PY FOI CARREGADO ===")
 print("DB_HOST carregado:", DB_HOST)
 print("DB_PORT carregado:", DB_PORT)
 print("DB_NAME carregado:", DB_NAME)
