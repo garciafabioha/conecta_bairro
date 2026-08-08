@@ -123,6 +123,8 @@ if entrar:
                             f"Bem-vindo, {morador.nome}!"
                         )
 
+                        st.rerun()
+
         except Exception as exc:
 
             st.error(

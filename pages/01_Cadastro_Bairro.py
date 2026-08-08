@@ -91,7 +91,7 @@ if cadastrar:
 
                     st.success(
                         f"🏘️ Bairro nº {bairro.id} "
-                        "cadastrado com sucesso!"
+                        "Cadastrado com sucesso!"
                     )
 
         except Exception as exc:
