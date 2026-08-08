@@ -1,7 +1,8 @@
-import os
 import bcrypt
 import streamlit as st
-from sqlalchemy import select, text
+
+from sqlalchemy import select
+
 from database import SessionLocal
 from models import Morador
 
@@ -12,13 +13,15 @@ st.set_page_config(
     layout="centered",
 )
 
+
 # ---------------------------------------------------------
 # Se já estiver logado, encaminha para o sistema
 # ---------------------------------------------------------
 
 if st.session_state.get("logado"):
     st.switch_page("app.py")
-    
+
+
 # ---------------------------------------------------------
 # TELA
 # ---------------------------------------------------------
@@ -111,25 +114,19 @@ if entrar:
 
                         # Guarda os dados do usuário logado
                         st.session_state["logado"] = True
-
                         st.session_state["morador_id"] = morador.id
-
                         st.session_state["bairro_id"] = morador.bairro_id
-
                         st.session_state["morador_nome"] = morador.nome
-
                         st.session_state["morador_email"] = morador.email
 
                         st.success(
                             f"Bem-vindo, {morador.nome}!"
                         )
 
-                        st.rerun()
-
         except Exception as exc:
 
             st.error(
-                "Não foi possível realizar o login."
+                "Não foi possível realizar o login. Tente novamente."
             )
 
             st.exception(exc)
