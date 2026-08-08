@@ -283,6 +283,12 @@ pagina_agenda = st.Page(
     icon="📅",
 )
 
+pagina_painel = st.Page(
+    "pages/9_Painel_Bairro.py",
+    title="Painel do Bairro",
+    icon="📊",
+)
+
 # ---------------------------------------------------------
 # NAVEGAÇÃO CONFORME O LOGIN
 # ---------------------------------------------------------
@@ -293,6 +299,7 @@ if st.session_state.get("logado", False):
         {
             "🏘️ Conecta Bairro": [
                 pagina_home,
+                 pagina_painel,
                 pagina_seguranca,
                 pagina_manutencao,
                 pagina_viagens,
