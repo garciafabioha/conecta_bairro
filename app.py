@@ -1,8 +1,10 @@
 import streamlit as st
 from sqlalchemy import text
-
 from database import engine
 
+from init_db import criar_tabelas
+
+criar_tabelas()
 
 # ---------------------------------------------------------
 # CONFIGURAÇÃO GERAL
