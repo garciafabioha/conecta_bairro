@@ -7,7 +7,6 @@ from sqlalchemy import select
 from database import SessionLocal
 from models import Morador
 
-
 st.set_page_config(
     page_title="Login | Conecta Bairro",
     page_icon="🏘️",

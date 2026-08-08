@@ -4,6 +4,11 @@ from datetime import datetime
 
 from database import SessionLocal
 from models import AlertaSeguranca
+from zoneinfo import ZoneInfo
+
+agora_brasilia = datetime.now(
+    ZoneInfo("America/Sao_Paulo")
+)
 
 st.set_page_config(
     page_title="Segurança | Conecta Bairro",
@@ -66,13 +71,15 @@ with st.form("form_seguranca"):
 
     with col3:
         data_ocorrencia = st.date_input(
-            "Data"
-        )
+            "Data",
+        value=agora_brasilia.date(),
+    )
 
     with col4:
         hora_ocorrencia = st.time_input(
-            "Hora"
-        )
+            "Hora",
+        value=agora_brasilia.time(),
+    )
 
     urgencia = st.selectbox(
         "Nível de urgência",

@@ -5,6 +5,12 @@ from sqlalchemy import select
 from rodape import exibir_rodape
 from database import SessionLocal
 from models import Votacao, OpcaoVotacao, Voto
+from zoneinfo import ZoneInfo
+
+agora_brasilia = datetime.now(
+    ZoneInfo("America/Sao_Paulo")
+)
+
 
 
 st.set_page_config(
@@ -73,7 +79,7 @@ with st.form("form_criar_votacao"):
     with col3:
         data_inicio = st.date_input(
             "Data de início",
-            value=date.today(),
+            value=agora_brasilia.date(),
         )
 
         hora_inicio = st.time_input(
@@ -84,7 +90,7 @@ with st.form("form_criar_votacao"):
     with col4:
         data_fim = st.date_input(
             "Data de encerramento",
-            value=date.today(),
+            value=agora_brasilia.date(),
         )
 
         hora_fim = st.time_input(

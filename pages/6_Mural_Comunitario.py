@@ -3,7 +3,12 @@ from decimal import Decimal, InvalidOperation
 from rodape import exibir_rodape
 from database import SessionLocal
 from models import Publicacao
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
+agora_brasilia = datetime.now(
+    ZoneInfo("America/Sao_Paulo")
+)
 
 st.set_page_config(
     page_title="Mural Comunitário | Conecta Bairro",

@@ -3,6 +3,11 @@ from datetime import datetime, date, time
 from rodape import exibir_rodape
 from database import SessionLocal
 from models import Evento, ParticipanteEvento
+from zoneinfo import ZoneInfo
+
+agora_brasilia = datetime.now(
+    ZoneInfo("America/Sao_Paulo")
+)
 
 
 st.set_page_config(
@@ -67,7 +72,7 @@ with st.form("form_evento"):
     with col3:
         data_inicio = st.date_input(
             "Data de início",
-            value=date.today(),
+            value=agora_brasilia.date(),
         )
 
         hora_inicio = st.time_input(
@@ -78,7 +83,7 @@ with st.form("form_evento"):
     with col4:
         data_fim = st.date_input(
             "Data de término",
-            value=date.today(),
+            value=agora_brasilia.date(),
         )
 
         hora_fim = st.time_input(

@@ -1,9 +1,14 @@
 import streamlit as st
-from datetime import date
+from datetime import date,datetime
 from rodape import exibir_rodape
 from database import SessionLocal,engine
 from models import Viagem, ApoioViagem
 from sqlalchemy import text
+from zoneinfo import ZoneInfo
+
+agora_brasilia = datetime.now(
+    ZoneInfo("America/Sao_Paulo")
+)
 
 st.set_page_config(
     page_title="Viagens | Conecta Bairro",
@@ -79,13 +84,13 @@ with st.form("form_viagens"):
     with col3:
         data_inicio = st.date_input(
             "Data de saída",
-            value=date.today(),
+            value=agora_brasilia.date(),
         )
 
     with col4:
         data_fim = st.date_input(
             "Data de retorno",
-            value=date.today(),
+            value=agora_brasilia.date(),
         )
 
     observacoes = st.text_area(
