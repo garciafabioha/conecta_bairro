@@ -1,5 +1,6 @@
 import bcrypt
 import streamlit as st
+from rodape import exibir_rodape
 
 from sqlalchemy import select
 
@@ -134,3 +135,5 @@ if entrar:
             )
 
             st.exception(exc)
+
+exibir_rodape()

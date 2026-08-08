@@ -1,6 +1,6 @@
 import streamlit as st
 from datetime import datetime, date, time
-
+from rodape import exibir_rodape
 from database import SessionLocal
 from models import Agenda
 
@@ -166,3 +166,5 @@ if enviar:
                 "Não foi possível adicionar o compromisso à agenda."
             )
             st.exception(exc)
+
+exibir_rodape()

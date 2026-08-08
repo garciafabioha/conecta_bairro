@@ -1,6 +1,6 @@
 import streamlit as st
 from datetime import datetime
-
+from rodape import exibir_rodape
 from database import SessionLocal
 from models import OcorrenciaUrbana
 
@@ -147,3 +147,5 @@ if enviar:
         except Exception as exc:
             st.error("Não foi possível registrar a ocorrência.")
             st.exception(exc)
+
+exibir_rodape()

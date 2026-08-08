@@ -1,7 +1,7 @@
 import streamlit as st
 from sqlalchemy import text
 from database import engine
-
+from rodape import exibir_rodape
 
 # ---------------------------------------------------------
 # PROTEÇÃO DA PÁGINA
@@ -509,3 +509,5 @@ else:
         "Ainda não existem atividades registradas "
         "para este bairro."
     )
+
+exibir_rodape()

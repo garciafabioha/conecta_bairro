@@ -1,9 +1,9 @@
 import streamlit as st
 from datetime import date
-
-from database import SessionLocal
+from rodape import exibir_rodape
+from database import SessionLocal,engine
 from models import Viagem, ApoioViagem
-
+from sqlalchemy import text
 
 st.set_page_config(
     page_title="Viagens | Conecta Bairro",
@@ -30,11 +30,49 @@ with st.form("form_viagens"):
         f"🏘️ Bairro: **{st.session_state['bairro_nome']}**"
     )
 
-    vizinho_id = st.number_input(
-        "Código do vizinho que dará apoio",
-        min_value=1,
-        step=1,
+    sql_vizinhos = text("""
+        SELECT
+            id,
+            nome
+        FROM moradores
+        WHERE bairro_id = :bairro_id
+        AND ativo = TRUE
+        AND id <> :morador_id
+        ORDER BY nome
+    """)
+
+    with engine.connect() as conn:
+        vizinhos = conn.execute(
+            sql_vizinhos,
+            {
+                "bairro_id": bairro_id,
+                "morador_id": morador_id,
+            }
+        ).mappings().all()
+
+    if not vizinhos:
+        st.warning(
+            "Não existem outros moradores ativos "
+            "cadastrados neste bairro para prestar apoio."
+        )
+        st.stop()
+
+    opcoes_vizinhos = {
+        vizinho["id"]: vizinho["nome"]
+        for vizinho in vizinhos
+    }
+
+    vizinho_selecionado = st.selectbox(
+        "👥 Vizinho que dará apoio",
+        options=list(opcoes_vizinhos.keys()),
+        format_func=lambda id_vizinho: opcoes_vizinhos[id_vizinho],
     )
+
+    if vizinho_selecionado is None:
+        st.warning("Selecione um vizinho para dar apoio.")
+        st.stop()
+
+    vizinho_id = int(vizinho_selecionado)
 
     col3, col4 = st.columns(2)
 
@@ -87,7 +125,7 @@ if enviar:
             "A data de retorno não pode ser anterior à data de saída."
         )
 
-    elif int(morador_id) == int(vizinho_id):
+    elif morador_id == vizinho_id:
         st.warning(
             "O morador e o vizinho responsável pelo apoio não podem ser a mesma pessoa."
         )
@@ -144,3 +182,5 @@ if enviar:
         except Exception as exc:
             st.error("Não foi possível registrar a viagem.")
             st.exception(exc)
+
+exibir_rodape()

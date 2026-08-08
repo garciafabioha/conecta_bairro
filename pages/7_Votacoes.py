@@ -1,8 +1,8 @@
 import streamlit as st
 from datetime import datetime, date, time
-
+from rodape import exibir_rodape
 from sqlalchemy import select
-
+from rodape import exibir_rodape
 from database import SessionLocal
 from models import Votacao, OpcaoVotacao, Voto
 
@@ -283,3 +283,5 @@ else:
                 "Verifique se este morador já votou nesta votação."
             )
             st.exception(exc)
+
+exibir_rodape()

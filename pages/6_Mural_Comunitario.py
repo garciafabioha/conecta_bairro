@@ -1,6 +1,6 @@
 import streamlit as st
 from decimal import Decimal, InvalidOperation
-
+from rodape import exibir_rodape
 from database import SessionLocal
 from models import Publicacao
 
@@ -143,3 +143,5 @@ if enviar:
         except Exception as exc:
             st.error("Não foi possível criar a publicação.")
             st.exception(exc)
+
+exibir_rodape()

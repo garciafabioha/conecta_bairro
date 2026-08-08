@@ -1,5 +1,5 @@
 import streamlit as st
-
+from rodape import exibir_rodape
 from sqlalchemy import select
 
 from auth import gerar_hash_senha
@@ -142,3 +142,5 @@ if cadastrar:
         except Exception as exc:
             st.error("Não foi possível cadastrar o morador.")
             st.exception(exc)
+
+exibir_rodape()

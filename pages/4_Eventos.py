@@ -1,6 +1,6 @@
 import streamlit as st
 from datetime import datetime, date, time
-
+from rodape import exibir_rodape
 from database import SessionLocal
 from models import Evento, ParticipanteEvento
 
@@ -165,3 +165,5 @@ if enviar:
         except Exception as exc:
             st.error("Não foi possível criar o evento.")
             st.exception(exc)
+
+exibir_rodape()

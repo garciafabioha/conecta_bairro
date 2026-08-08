@@ -1,4 +1,5 @@
 import streamlit as st
+from rodape import exibir_rodape
 from datetime import datetime
 
 from database import SessionLocal
@@ -146,3 +147,5 @@ if enviar:
         except Exception as exc:
             st.error("Não foi possível registrar o alerta.")
             st.exception(exc)
+
+exibir_rodape()

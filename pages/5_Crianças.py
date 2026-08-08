@@ -1,6 +1,6 @@
 import streamlit as st
 from datetime import datetime, date, time
-
+from rodape import exibir_rodape
 from database import SessionLocal
 from models import Evento, ParticipanteEvento
 
@@ -207,3 +207,5 @@ if enviar:
                 "Não foi possível criar a atividade infantil."
             )
             st.exception(exc)
+
+exibir_rodape()

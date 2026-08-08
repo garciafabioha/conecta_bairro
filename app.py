@@ -1,6 +1,7 @@
 import streamlit as st
 from sqlalchemy import text
 from database import engine
+from rodape import exibir_rodape
 
 # ---------------------------------------------------------
 # CONFIGURAÇÃO GERAL
@@ -201,7 +202,7 @@ def pagina_inicio():
             f"{st.session_state['bairro_id']}"
         )
 
-
+        exibir_rodape()
 # ---------------------------------------------------------
 # DEFINIÇÃO DAS PÁGINAS DE ACESSO / CADASTRO
 # ---------------------------------------------------------
@@ -359,3 +360,4 @@ else:
 # ---------------------------------------------------------
 
 navegacao.run()
+

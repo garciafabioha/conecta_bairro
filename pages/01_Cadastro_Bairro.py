@@ -1,5 +1,5 @@
 import streamlit as st
-
+from rodape import exibir_rodape
 from sqlalchemy import select
 
 from database import SessionLocal
@@ -99,3 +99,5 @@ if cadastrar:
                 "Não foi possível cadastrar o bairro."
             )
             st.exception(exc)
+
+exibir_rodape()
