@@ -18,26 +18,17 @@ st.caption(
 
 st.markdown("---")
 
-
 with st.form("form_evento"):
 
     st.subheader("Dados do evento")
 
-    col1, col2 = st.columns(2)
+    criado_por = st.session_state["morador_id"]
+    bairro_id = st.session_state["bairro_id"]
 
-    with col1:
-        bairro_id = st.number_input(
-            "Código do bairro",
-            min_value=1,
-            step=1,
-        )
-
-    with col2:
-        criado_por = st.number_input(
-            "Código do morador responsável",
-            min_value=1,
-            step=1,
-        )
+    st.info(
+        f"👤 Morador: **{st.session_state['morador_nome']}**  |  "
+        f"🏘️ Bairro: **{st.session_state['bairro_nome']}**"
+    )
 
     categoria = st.selectbox(
         "Categoria do evento",

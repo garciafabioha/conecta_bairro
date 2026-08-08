@@ -18,26 +18,23 @@ st.caption(
 
 st.markdown("---")
 
-
-with st.form("form_viagem"):
+with st.form("form_viagens"):
 
     st.subheader("Dados da viagem")
 
-    col1, col2 = st.columns(2)
+    morador_id = st.session_state["morador_id"]
+    bairro_id = st.session_state["bairro_id"]
 
-    with col1:
-        morador_id = st.number_input(
-            "Código do morador",
-            min_value=1,
-            step=1,
-        )
+    st.info(
+        f"👤 Morador: **{st.session_state['morador_nome']}**  |  "
+        f"🏘️ Bairro: **{st.session_state['bairro_nome']}**"
+    )
 
-    with col2:
-        vizinho_id = st.number_input(
-            "Código do vizinho que dará apoio",
-            min_value=1,
-            step=1,
-        )
+    vizinho_id = st.number_input(
+        "Código do vizinho que dará apoio",
+        min_value=1,
+        step=1,
+    )
 
     col3, col4 = st.columns(2)
 

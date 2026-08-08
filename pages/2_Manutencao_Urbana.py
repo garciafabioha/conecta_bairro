@@ -16,24 +16,15 @@ st.caption("Registre problemas urbanos para acompanhamento da comunidade.")
 
 st.markdown("---")
 
-
 with st.form("form_manutencao_urbana"):
 
-    col_id1, col_id2 = st.columns(2)
+    morador_id = st.session_state["morador_id"]
+    bairro_id = st.session_state["bairro_id"]
 
-    with col_id1:
-        morador_id = st.number_input(
-            "Código do morador",
-            min_value=1,
-            step=1,
-        )
-
-    with col_id2:
-        bairro_id = st.number_input(
-            "Código do bairro",
-            min_value=1,
-            step=1,
-        )
+    st.info(
+        f"👤 Morador: **{st.session_state['morador_nome']}**  |  "
+        f"🏘️ Bairro: **{st.session_state['bairro_nome']}**"
+    )
 
     tipo_ocorrencia = st.selectbox(
         "Tipo do problema",

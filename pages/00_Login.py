@@ -115,9 +115,11 @@ if entrar:
                         # Guarda os dados do usuário logado
                         st.session_state["logado"] = True
                         st.session_state["morador_id"] = morador.id
-                        st.session_state["bairro_id"] = morador.bairro_id
                         st.session_state["morador_nome"] = morador.nome
                         st.session_state["morador_email"] = morador.email
+
+                        st.session_state["bairro_id"] = morador.bairro_id
+                        st.session_state["bairro_nome"] = morador.bairro.nome
 
                         st.success(
                             f"Bem-vindo, {morador.nome}!"

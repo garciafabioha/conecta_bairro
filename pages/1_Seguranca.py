@@ -4,7 +4,6 @@ from datetime import datetime
 from database import SessionLocal
 from models import AlertaSeguranca
 
-
 st.set_page_config(
     page_title="Segurança | Conecta Bairro",
     page_icon="🚨",
@@ -16,24 +15,15 @@ st.caption("Registre alertas de segurança para a comunidade.")
 
 st.markdown("---")
 
-
 with st.form("form_seguranca"):
 
-    col_id1, col_id2 = st.columns(2)
+    morador_id = st.session_state["morador_id"]
+    bairro_id = st.session_state["bairro_id"]
 
-    with col_id1:
-        morador_id = st.number_input(
-            "Código do morador",
-            min_value=1,
-            step=1,
-        )
-
-    with col_id2:
-        bairro_id = st.number_input(
-            "Código do bairro",
-            min_value=1,
-            step=1,
-        )
+    st.info(
+        f"👤 Morador: **{st.session_state['morador_nome']}**  |  "
+        f"🏘️ Bairro: **{st.session_state['bairro_nome']}**"
+    )
 
     tipo_alerta = st.selectbox(
         "Tipo do alerta",

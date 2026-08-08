@@ -20,7 +20,6 @@ st.caption(
 
 st.markdown("---")
 
-
 with SessionLocal() as db:
     bairros = db.scalars(
         select(Bairro)
