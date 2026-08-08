@@ -299,7 +299,7 @@ if st.session_state.get("logado", False):
         {
             "🏘️ Conecta Bairro": [
                 pagina_home,
-                 pagina_painel,
+                pagina_painel,
                 pagina_seguranca,
                 pagina_manutencao,
                 pagina_viagens,
