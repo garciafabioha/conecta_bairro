@@ -93,9 +93,9 @@ with st.form("form_manutencao_urbana"):
         ],
     )
 
-    enviar_prefeitura = st.checkbox(
-        "Solicitar encaminhamento para a prefeitura"
-    )
+    # enviar_prefeitura = st.checkbox(
+    #     "Solicitar encaminhamento para a prefeitura"
+    # )
 
     foto = st.file_uploader(
         "Foto",
