@@ -140,7 +140,7 @@ if enviar:
                     descricao=descricao,
                     endereco=localizacao,
                     status="aberto",
-                    enviado_prefeitura=enviar_prefeitura,
+                    #enviado_prefeitura=enviar_prefeitura,
                 )
 
                 db.add(ocorrencia)
