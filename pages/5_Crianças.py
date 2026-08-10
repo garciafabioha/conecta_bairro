@@ -5,6 +5,10 @@ from database import SessionLocal
 from models import Evento, ParticipanteEvento
 from zoneinfo import ZoneInfo
 
+if not st.session_state.get("logado", False):
+    st.warning("🔐 Faça login para acessar esta página.")
+    st.stop()
+
 agora_brasilia = datetime.now(
     ZoneInfo("America/Sao_Paulo")
 )
